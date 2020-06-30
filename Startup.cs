@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using StrengthAndHonor.Repositories;
 using StrengthAndHonor.Settings;
 
 namespace StrengthAndHonor
@@ -24,6 +25,7 @@ namespace StrengthAndHonor
         {
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
 
+            services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
             services.AddSingleton<IMongoDbSettings>(serviceProvider =>
                 serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
 
