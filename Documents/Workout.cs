@@ -28,6 +28,8 @@ namespace StrengthAndHonor.Documents
     {
         public WeightAndReps WeightAndReps { get; set; }
         public DistanceAndTime DistanceAndTime { get; set; }
+        public string Comment { get; set; }
+        public float? RPE { get; set; }
     }
 
     public class WeightAndReps
