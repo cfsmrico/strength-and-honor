@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace StrengthAndHonor.Documents
 {
-    public class Workout
+    [BsonCollection("workouts")]
+    public class Workout : Document
     {
         public DateTime Date { get; set; }
         public List<Exercise> Excercises { get; set; }
