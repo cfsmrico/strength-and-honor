@@ -10,32 +10,32 @@ namespace StrengthAndHonor.Controllers
     [Route("[controller]")]
     public class SampleController : ControllerBase
     {
-        private readonly IMongoRepository<Person> _peopleRepository;
+        private readonly IMongoRepository<User> _userRepository;
 
-        public SampleController(IMongoRepository<Person> peopleRepository)
+        public SampleController(IMongoRepository<User> userRepository)
         {
-            _peopleRepository = peopleRepository;
+            _userRepository = userRepository;
         }
 
-        [HttpPost("registerPerson")]
-        public async Task AddPerson(string firstName, string lastName)
+        [HttpPost("registerUser")]
+        public async Task AddUser(string firstName, string lastName)
         {
-            var person = new Person()
+            var user = new User()
             {
                 FirstName = firstName,
                 LastName = lastName
             };
 
-            await _peopleRepository.InsertOneAsync(person);
+            await _userRepository.InsertOneAsync(user);
         }
 
-        [HttpGet("getPeopleData")]
-        public IEnumerable<string> GetPeopleData()
+        [HttpGet("getUserData")]
+        public IEnumerable<string> GetUserData()
         {
-            var people = _peopleRepository
+            var users = _userRepository
                 .FilterBy(x => x.FirstName != "test", projection => projection.FirstName);
 
-            return people;
+            return users;
         }
     }
 }
