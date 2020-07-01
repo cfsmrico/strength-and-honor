@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrengthAndHonor.Repositories
 {
-    public interface IMongoRepository<TDocument> where TDocument : IDocument
+    public interface IMongoRepository<TDocument> where TDocument : Document
     {
         IQueryable<TDocument> AsQueryable();
 

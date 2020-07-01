@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StrengthAndHonor.Documents;
@@ -24,8 +22,8 @@ namespace StrengthAndHonor.Controllers
         {
             var person = new Person()
             {
-                FirstName = "John",
-                LastName = "Doe"
+                FirstName = firstName,
+                LastName = lastName
             };
 
             await _peopleRepository.InsertOneAsync(person);
@@ -34,10 +32,9 @@ namespace StrengthAndHonor.Controllers
         [HttpGet("getPeopleData")]
         public IEnumerable<string> GetPeopleData()
         {
-            var people = _peopleRepository.FilterBy(
-                filter => filter.FirstName != "test",
-                projection => projection.FirstName
-            );
+            var people = _peopleRepository
+                .FilterBy(x => x.FirstName != "test", projection => projection.FirstName);
+
             return people;
         }
     }

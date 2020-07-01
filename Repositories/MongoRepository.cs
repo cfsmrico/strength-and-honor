@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StrengthAndHonor.Repositories
 {
-    public class MongoRepository<TDocument> : IMongoRepository<TDocument> where TDocument : IDocument
+    public class MongoRepository<TDocument> : IMongoRepository<TDocument> where TDocument : Document
     {
         private readonly IMongoCollection<TDocument> _collection;
 
