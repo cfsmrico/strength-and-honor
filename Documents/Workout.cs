@@ -6,7 +6,7 @@ namespace StrengthAndHonor.Documents
     [BsonCollection("workouts")]
     public class Workout : Document
     {
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public List<Exercise> Excercises { get; set; }
         public List<WorkoutSet> Sets { get; set; }
     }
@@ -15,18 +15,19 @@ namespace StrengthAndHonor.Documents
     {
         public string Name { get; set; }
         public string Category { get; set; }
-        public ExerciseType Type { get; set; }
+        public string Type { get; set; }
         public string Notes { get; set; }        
     }
 
-    public enum ExerciseType
+    /*public enum ExerciseType
     {
         WeightAndReps,
         DistanceAndTime
-    }
+    }*/
 
     public class WorkoutSet
     {
+        public string ExerciseName { get; set; }
         public WeightAndReps WeightAndReps { get; set; }
         public DistanceAndTime DistanceAndTime { get; set; }
         public string Comment { get; set; }
@@ -36,18 +37,18 @@ namespace StrengthAndHonor.Documents
     public class WeightAndReps
     {
         public float Weight { get; set; }
-        public WeightUnit WeightUnit { get; set; }
-        public int Reps { get; set; }
+        public string WeightUnit { get; set; }
+        public ushort Reps { get; set; }
     }
 
     public class DistanceAndTime
     {
         public float Distance { get; set; }
-        public DistanceUnit DistanceUnit { get; set; }
-        public DateTime Time { get; set; }
+        public string DistanceUnit { get; set; }
+        public string Time { get; set; }
     }
 
-    public enum WeightUnit
+/*    public enum WeightUnit
     {
         Kilograms,
         Pounds
@@ -60,4 +61,5 @@ namespace StrengthAndHonor.Documents
         Feet,
         Miles
     }
+*/
 }
